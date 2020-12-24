@@ -1,0 +1,50 @@
+﻿
+<div class="modal fade" data-app-modal="pedidos.modal.dados" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="pedidos.form.dados">
+                <div class="modal-header">
+                    <button type="button" class="close" data-app-model-dismiss="pedidos.modal.dados"><span>&times;</span></button>
+                    <h4 class="modal-title">Confirmar Pedido</h4>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat=" item in pedidos.itens">
+                            <td data-ng-bind="item.nome"></td>
+                            <td data-ng-bind="item.preco"></td>
+                            <td data-ng-bind="item.quantidade"></td>
+                            <td data-ng-bind="pedidos.calcSubtotal(item)"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"><strong>Total</strong></td>
+                            <td class="color-danger" data-ng-bind="pedidos.calcTotal()"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-success"
+                            data-ng-disabled="pedidos.form.dados.$invalid || pedidos.modal.salvando"
+                            data-ng-click="pedidos.salvar(); pedidos.limparItens(); ">
+                        <span data-ng-show="pedidos.modal.salvando.">Salvando&nbsp;<i class="fa fa-refresh fa-spin"></i></span>
+                        <span data-ng-hide="pedidos.modal.salvando">Salvar</span>
+                    </button>
+                    <span>&nbsp;</span>
+                    <button type="button" class="btn btn-danger" data-app-modal-dismiss="pedidos.modal.dados">
+                        Fechar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

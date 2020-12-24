@@ -1,0 +1,118 @@
+﻿@{
+    Layout = "~/Views/Index.cshtml";
+}
+
+<div data-ng-controller="PedidosController as pedidos">
+
+    @Html.Partial("~/Views/Pedidos/Partial/FiltroPedidos.cshtml")
+
+
+    <div class="alert alert-danger" data-ng-show="pedidos.erros">
+        <button type="button" class="close" data-ng-click="pedidos.limparMensagens();"><span aria-hidden="true">&times;</span></button>
+        <span data-ng-repeat="erro in pedidos.erros" data-ng-bind="erro"></span>
+    </div>
+    <div class="alert alert-success" data-ng-show="pedidos.info">
+        <button type="button" class="close" data-ng-click="pedidos.limparMensagens();"><span aria-hidden="true">&times;</span></button>
+        <span data-ng-bind="pedidos.info"></span>
+    </div>
+
+    <div class="panel panel-white">
+        <div class="panel-heading"><i class="fa fa-list"></i>&nbsp;Produtos</div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-show="pedidos.cadastrados.length == 0">
+                            <td colspan="4">
+                                <em>Nenhum pedido encontrado.</em>
+                            </td>
+                        </tr>
+                        <tr data-ng-init="pedidos.adicionarHabilitado()"
+                            data-ng-repeat="produto in pedidos.produtos">
+                            <td data-ng-bind="produto.nome"> </td>
+                            <td data-ng-bind="produto.preco"></td>
+                            <td>
+                                <button class=" btn btn-success fa fa-shopping-cart"
+                                        data-ng-click="pedidos.adicionarItem(produto); pedidos.desabilitarBotao(produto); pedidos.limparMensagens()"
+                                        data-ng-disabled="!produto.habilitado"></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr data-ng-hide="pedidos.cadastrados.lenght == 0">
+                            <td colspan="4"
+                                class="text-center"
+                                data-app-paginacao="pedidos.filtro.paginacao"
+                                data-app-paginacao-limite="10"
+                                data-app-paginacao-iniciar="pedidos.consultarProdutos(true)"
+                                data-app-paginacao-atualizar="pedidos.consultarProdutos(false)"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="panel-heading"><i class="fa  fa-shopping-bag"></i>&nbsp;Produtos do pedido</div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-show="pedidos.itens.length == 0">
+                            <td colspan="4">
+                                <em>Nenhum item cadastrado.</em>
+                            </td>
+                        </tr>
+                        <tr data-ng-init="pedidos.adicionarDesabilitado()"
+                            data-ng-repeat=" item in pedidos.itens">
+                            <td data-ng-bind="item.nome"></td>
+                            <td data-ng-bind="item.preco"></td>
+                            <td><input class="text-center" type="number" min="1" max="100" data-ng-model="item.quantidade" data-ng-change="pedidos.calcTotal()"></td>
+                            <td data-ng-bind="pedidos.calcSubtotal(item)"></td>
+                            <td>
+                                <button class=" btn btn-danger fa fa-trash"
+                                        data-ng-click="pedidos.habilitarBotao(item)">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-striped text-right">
+                    <tfoot>
+                        <tr>
+                            <th class="text-right">Total</th>
+                        </tr>
+                        <tr>
+                            <td data-ng-bind="pedidos.calcTotal()"></td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">
+                                <button class="btn btn-success" data-app-modal-target="pedidos.modal.dados" data-ng-disabled="pedidos.itens == 0">
+                                    Fechar Pedido&nbsp;
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </button>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table> 
+            </div>   
+        </div>
+    </div>
+    @Html.Partial("~/Views/Pedidos/Modal/ModalConsultarPedido.cshtml")
+</div>
+
+
+

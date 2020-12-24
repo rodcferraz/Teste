@@ -1,0 +1,46 @@
+﻿
+<div class="modal fade" data-app-modal="pedidos.modal.dados" data-backdrop="static">
+    <div class="modal-dialog"> 
+        <div class="modal-content">
+            <form name="pedidos.form.dados">
+                <div class="modal-header">
+                    <button type="button" class="close" data-app-model-dismiss="pedidos.modal.dados"><span>&times;</span></button>
+                    <h4 class="modal-title">Itens do pedido</h4>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Produto</th>
+                            <th>Pedido</th>
+                            <th>Quantidade</th>
+                            <th>Subtotal</th>
+                        </tr>                       
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="item in pedidos.pedido.itens">
+                            <td data-ng-bind="item.idItem"></td>
+                            <td data-ng-bind="item.produto"></td>
+                            <td data-ng-bind="item.idPedido"></td>
+                            <td data-ng-bind="item.quantidade"></td>
+                            <td data-ng-bind="item.subtotal"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><strong>Total</strong></td>
+                            <td class="color-danger" data-ng-bind="pedidos.pedido.total"></td>
+
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="modal-footer">
+                    <span>&nbsp;</span>
+                    <button type="button" class="btn btn-danger" data-app-modal-dismiss="pedidos.modal.dados">
+                        Fechar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

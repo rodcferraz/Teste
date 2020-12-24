@@ -1,0 +1,35 @@
+﻿<div class="modal fade" data-app-modal="pedidos.modal.confirmarRemover" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-app-modal-dismiss="pedidos.modal.confirmarRemover"><span>&times;</span></button>
+                Remover Pedido
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" data-ng-show="pedidos.modal.erros.aoRemover">
+                    <button type="button" class="close" data-ng-click="pedidos.modal.limparMensagens()"><span aria-hidden="true">&times;</span></button>
+                    <span data-ng-repeat="erro in pedidos.modal.erros.aoRemover" data-ng-bind="erro"></span>
+                </div>
+                <p>
+                    Deseja realmente remover o pedido <strong data-ng-bind="pedidos.pedido.idPedido"></strong> ?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-success"
+                        data-ng-click="pedidos.modal.remover()">
+                    <span data-ng-show="pedidos.modal.removendo"
+                          data-ng-disabled="pedidos.modal.removendo">
+                        Removendo&nbsp;<i class="fa fa-refresh fa-spin"></i>
+                    </span>
+                    <span data-ng-hide="pedidos.modal.removendo">Sim</span>
+                </button>
+                <button type="button" class="btn btn-danger"
+                        data-app-modal-dismiss="pedidos.modal.confirmarRemover">
+                    Não
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

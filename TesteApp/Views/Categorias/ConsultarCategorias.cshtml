@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "~/Views/Index.cshtml";
+}
+
+
+<div data-ng-controller="CategoriasController as categorias">
+
+    @Html.Partial("~/Views/Categorias/Partial/FiltroCategorias.cshtml")
+
+    <div class="alert alert-danger" data-ng-show="categorias.erros">
+        <button type="button" class="close" data-ng-click="categorias.limparMensagens()"><span aria-hidden="true">&times;</span></button>
+        <span data-ng-repeat="erro in categorias.erros" data-ng-bind="erro"></span>
+    </div>
+    <div class="alert alert-success" data-ng-show="categorias.info">
+        <button type="button" class="close" data-ng-click="categorias.limparMensagens()"><span aria-hidden="true">&times;</span></button>
+        <span data-ng-bind="categorias.info"></span>
+    </div>
+
+    <div class="panel panel-white">
+        <div class="panel-heading"><i class="fa fa-list"></i>&nbsp;Categorias</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <button class="btn btn-success"
+                        data-app-modal-target="categorias.modal.dados"
+                        data-ng-click="categorias.nova()">
+                    Adicionar&nbsp;
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-show="categorias.cadastradas.length == 0">
+                            <td colspan="2">
+                                <em>Nenhuma categoria encontrada.</em>
+                            </td>
+                        </tr>
+                        <tr data-ng-repeat="categoria in categorias.cadastradas">
+                            <td data-ng-bind="categoria.descricao"></td>
+                            <td class="td-col-4 text-center">
+                                <button class="btn btn-warning btn-sm"
+                                        data-ng-click="categorias.selecionar(categoria); categorias.limparMensagens()"
+                                        data-app-modal-target="categorias.modal.dados">
+                                    Editar
+                                </button>
+                                <button class="btn btn-danger btn-sm"
+                                        data-ng-click="categorias.selecionar(categoria); categorias.limparMensagens()"
+                                        data-app-modal-target="categorias.modal.confirmarRemover">
+                                    Remover
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr data-ng-hide="categorias.cadastradas.length == 0">
+                            <td colspan="2"
+                                class="text-center"
+                                data-app-paginacao="categorias.filtro.paginacao"
+                                data-app-paginacao-limite="10"
+                                data-app-paginacao-iniciar="categorias.consultar(true)"
+                                data-app-paginacao-atualizar="categorias.consultar(false)"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("~/Views/Categorias/Modal/ModalNovaCategoria.cshtml")
+    @Html.Partial("~/Views/Categorias/Modal/ModalRemoverCategoria.cshtml")
+</div>

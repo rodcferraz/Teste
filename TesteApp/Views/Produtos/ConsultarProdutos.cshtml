@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "~/Views/Index.cshtml";
+}
+
+<div data-ng-controller="ProdutosController as produtos">
+    @Html.Partial("~/Views/Produtos/Partial/FiltroProdutos.cshtml")
+
+    <div class="alert alert-danger" data-ng-show="produtos.erros">
+        <button type="button" class="close" data-ng-click="produtos.limparMensagens();"><span aria-hidden="true">&times;</span></button>
+        <span data-ng-repeat="erro in produtos.erros" data-ng-bind="erro"></span>
+    </div>
+    <div class="alert alert-success" data-ng-show="produtos.info">
+        <button type="button" class="close" data-ng-click="produtos.limparMensagens();"><span aria-hidden="true">&times;</span></button>
+        <span data-ng-bind="produtos.info"></span>
+    </div>
+    
+    <div class="panel panel-white">
+        <div class="panel-heading"><i class="fa fa-list"></i>&nbsp;Produtos</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <button class="btn btn-success" data-app-modal-target="produtos.modal.dados" data-ng-click="produtos.novo()">
+                    Adicionar&nbsp;
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>IdCategoria</th>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-show="produtos.cadastrados.length == 0">
+                            <td colspan="4">
+                                <em>Nenhum produto encontrado.</em>
+                            </td>
+                        </tr>
+                        <tr data-ng-repeat="produto in produtos.cadastrados">
+                            <td data-ng-bind="produto.idCategoria"></td>
+                            <td data-ng-bind ="produto.nome"></td>
+                            <td data-ng-bind="produto.preco"></td>
+                            <td class="td-col-4 text-center" >
+                                <button class="btn btn-warning btn-sm"
+                                        data-ng-click="produtos.selecionar(produto); produtos.limparMensagens()"
+                                        data-app-modal-target="produtos.modal.dados">
+                                    Editar
+                                </button>
+                                <button class="btn btn-danger btn-sm" 
+                                        data-ng-click="produtos.selecionar(produto); produtos.limparMensagens()" 
+                                        data-app-modal-target="produtos.modal.confirmarRemover">
+                                    Remover
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr data-ng-hide="produtos.cadastrados.lenght == 0">
+                            <td colspan="4" 
+                                class="text-center"
+                                data-app-paginacao="produtos.filtro.paginacao"
+                                data-app-paginacao-limite="10"
+                                data-app-paginacao-iniciar="produtos.consultar(true)"
+                                data-app-paginacao-atualizar="produtos.consultar(false)"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Produtos/Modal/ModalNovoProduto.cshtml")
+    @Html.Partial("~/Views/Produtos/Modal/ModalRemoverProduto.cshtml")
+</div>
+
+

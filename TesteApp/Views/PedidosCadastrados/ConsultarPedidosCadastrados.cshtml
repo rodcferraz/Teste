@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "~/Views/Index.cshtml";
+}
+
+<div data-ng-controller="PedidosController as pedidos">
+
+    @Html.Partial("~/Views/PedidosCadastrados/Partial/FiltroPedidosCadastrados.cshtml")
+
+
+    <div class="alert alert-danger" data-ng-show="pedidos.erros">
+        <button type="button" class="close" data-ng-click="pedidos.limparMensagens();"><span aria-hidden="true">&times;</span></button>
+        <span data-ng-repeat="erro in pedidos.erros" data-ng-bind="erro"></span>
+    </div>
+    <div class="alert alert-success" data-ng-show="pedidos.info">
+        <button type="button" class="close" data-ng-click="pedidos.limparMensagens();"><span aria-hidden="true">&times;</span></button>
+        <span data-ng-bind="pedidos.info"></span>
+    </div>
+
+    <div class="panel panel-white">
+        <div class="panel-heading"><i class="fa  fa-shopping-bag"></i>&nbsp;Seus pedidos</div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Data Pedido</th>
+                    <th>Total</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-show="pedidos.cadastrados.length == 0">
+                    <td colspan="4">
+                        <em>Nenhum pedido encontrado.</em>
+                    </td>
+                </tr>
+                <tr data-ng-repeat="pedido in pedidos.cadastrados">
+                    <td data-ng-bind="pedido.idPedido"></td>
+                    <td data-ng-bind="pedido.dataPedido"></td>
+                    <td data-ng-bind="pedido.total"></td>
+                    <td>
+                        <button class="btn btn-info"
+                                data-ng-click="pedidos.selecionar(pedido)"
+                                data-app-modal-target="pedidos.modal.dados">
+                            <i class=" fa fa-list" aria-hidden="true">
+                            </i>
+                        </button>
+                        <button class="btn btn-danger"
+                                data-ng-click="pedidos.selecionar(pedido)"
+                                data-app-modal-target="pedidos.modal.confirmarRemover">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr data-ng-hide="pedidos.cadastrados.lenght == 0">
+                    <td colspan="4"
+                        class="text-center"
+                        data-app-paginacao="pedidos.filtro.paginacao"
+                        data-app-paginacao-limite="10"
+                        data-app-paginacao-iniciar="pedidos.consultar(true); pedidos.limparMensagens()"
+                        data-app-paginacao-atualizar="pedidos.consultar(false); pedidos.limparMensagens()"></td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+    @Html.Partial("~/Views/PedidosCadastrados/Modal/ModalConsultarItens.cshtml")
+    @Html.Partial("~/Views/PedidosCadastrados/Modal/ModalRemoverPedido.cshtml")
+</div>
+
+
+

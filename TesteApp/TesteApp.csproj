@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B7D738B3-9B3C-4F15-8539-164F77887ABA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TesteApp</RootNamespace>
+    <AssemblyName>TesteApp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\app\App.css" />
+    <Content Include="Content\css\app\BootstrapExtensions.css" />
+    <Content Include="Content\css\app\CustomApp.css" />
+    <Content Include="Content\css\app\NgCloak.css" />
+    <Content Include="Content\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\css\images\ui-bg_flat_0_eeeeee_40x100.png" />
+    <Content Include="Content\css\images\ui-bg_flat_55_ffffff_40x100.png" />
+    <Content Include="Content\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\css\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png" />
+    <Content Include="Content\css\images\ui-bg_highlight-soft_25_0073ea_1x100.png" />
+    <Content Include="Content\css\images\ui-bg_highlight-soft_50_dddddd_1x100.png" />
+    <Content Include="Content\css\images\ui-icons_0073ea_256x240.png" />
+    <Content Include="Content\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\css\images\ui-icons_666666_256x240.png" />
+    <Content Include="Content\css\images\ui-icons_ff0084_256x240.png" />
+    <Content Include="Content\css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\css\vendor.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\img\carregando.gif" />
+    <Content Include="Content\img\doc-word-image.png" />
+    <Content Include="Content\img\pdf-image.png" />
+    <Content Include="Content\img\ssp-logo-sem-descricao.png" />
+    <Content Include="Content\img\ssp-logo-sm.png" />
+    <Content Include="Content\img\xls-excel-image.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\Controllers\AppController.js" />
+    <Content Include="Scripts\Controllers\Dbo\CategoriasController.js" />
+    <Content Include="Scripts\Controllers\Dbo\PedidosController.js" />
+    <Content Include="Scripts\Controllers\Dbo\ProdutosController.js" />
+    <Content Include="Scripts\Directives\Componentes\CarregandoDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\CKEditorDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\CKEditorMidiaDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\CollapseDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\CollapseTargetDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\MenuActiveDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\ModalDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\ModalDismissDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\ModalTargetDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\PaginacaoContinuaDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\PaginacaoDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\RegraAcessoDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\SpinnerDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\TabContentDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\TabDirective.js" />
+    <Content Include="Scripts\Directives\Componentes\TooltipDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\CalendarioDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\CpfDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\FileUploadDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\LowercaseDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\MascaraDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\NumericoDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\PreviewMidiaUploadDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\SetFocusDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\TelefoneDirective.js" />
+    <Content Include="Scripts\Directives\Formulario\UppercaseDirective.js" />
+    <Content Include="Scripts\Directives\Graficos\BarChartDirective.js" />
+    <Content Include="Scripts\Directives\Graficos\LineChartDirective.js" />
+    <Content Include="Scripts\Directives\Maps\GeocoderDirective.js" />
+    <Content Include="Scripts\Directives\Maps\MapsDirective.js" />
+    <Content Include="Scripts\Directives\Maps\SearchBoxDirective.js" />
+    <Content Include="Scripts\Directives\Mouse\ClickOutDirective.js" />
+    <Content Include="Scripts\Directives\Mouse\CursorTextoService.js" />
+    <Content Include="Scripts\Directives\Recaptcha\RecaptchaDirective.js" />
+    <Content Include="Scripts\Directives\Teclado\CapslockDirective.js" />
+    <Content Include="Scripts\Directives\Teclado\DigitacaoDirective.js" />
+    <Content Include="Scripts\Directives\Teclado\EnterDirective.js" />
+    <Content Include="Scripts\html5shiv.min.js" />
+    <Content Include="Scripts\Locale\pt-br.js" />
+    <Content Include="Scripts\Modules\AppModule.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Services\App\ApiRequestService.js" />
+    <Content Include="Scripts\Services\App\BufferService.js" />
+    <Content Include="Scripts\Services\App\ColorsService.js" />
+    <Content Include="Scripts\Services\App\GlobalService.js" />
+    <Content Include="Scripts\Services\Dbo\CategoriaService.js" />
+    <Content Include="Scripts\Services\Dbo\PedidoService.js" />
+    <Content Include="Scripts\Services\Dbo\ProdutoService.js" />
+    <Content Include="Scripts\vendor.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppStart\AppHttp.cs" />
+    <Compile Include="AppStart\Bundle\ScriptBundleConfig.cs" />
+    <Compile Include="AppStart\Bundle\StyleBundleConfig.cs" />
+    <Compile Include="AppStart\RouteConfig.cs" />
+    <Compile Include="Attributes\AutorizacaoAttribute.cs" />
+    <Compile Include="Attributes\RequiredIfAttribute.cs" />
+    <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\Dbo\CategoriasController.cs" />
+    <Compile Include="Controllers\Dbo\PedidosController.cs" />
+    <Compile Include="Controllers\Dbo\ProdutosController.cs" />
+    <Compile Include="Extensions\ControllerExtension.cs" />
+    <Compile Include="Extensions\EnumHelperExtension.cs" />
+    <Compile Include="Extensions\HttpContextBaseExtension.cs" />
+    <Compile Include="Extensions\MappingExtensions.cs" />
+    <Compile Include="Extensions\RedirectResultExtension.cs" />
+    <Compile Include="Models\DataModel\DbApplication.cs" />
+    <Compile Include="Models\DataModel\Dbo\Mappers\CategoriaMap.cs" />
+    <Compile Include="Models\DataModel\Dbo\Mappers\ItemMap.cs" />
+    <Compile Include="Models\DataModel\Dbo\Mappers\PedidoMap.cs" />
+    <Compile Include="Models\DataModel\Dbo\Mappers\ProdutoMap.cs" />
+    <Compile Include="Models\DataModel\Dbo\Queries\CategoriaQuery.cs" />
+    <Compile Include="Models\DataModel\Dbo\Queries\ItemQuery.cs" />
+    <Compile Include="Models\DataModel\Dbo\Queries\PedidoQuery.cs" />
+    <Compile Include="Models\DataModel\Dbo\Queries\ProdutoQuery.cs" />
+    <Compile Include="Models\DomainModel\Dbo\Categoria.cs" />
+    <Compile Include="Models\DomainModel\Dbo\Item.cs" />
+    <Compile Include="Models\DomainModel\Dbo\Pedido.cs" />
+    <Compile Include="Models\DomainModel\Dbo\Produto.cs" />
+    <Compile Include="Models\Seguranca\CriptografiaAES.cs" />
+    <Compile Include="Models\Seguranca\Token.cs" />
+    <Compile Include="Models\Validacao\ExpressaoRegular.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Categorias\AtualizarCategoriaViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Categorias\CadastrarCategoriaViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Categorias\CategoriasCadastradasViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Categorias\IdCategoriaViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Item\ItemViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Pedidos\CadastrarPedidoViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Pedidos\IdPedidoViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Pedidos\PedidosCadastradosViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Produtos\AtualizarProdutoViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Produtos\CadastrarProdutoViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Produtos\IdProdutoViewModel.cs" />
+    <Compile Include="Models\ViewModel\Dbo\Produtos\ProdutosCadastradosViewModel.cs" />
+    <Compile Include="Models\ViewModel\PaginacaoViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Views\Categorias\ConsultarCategorias.cshtml" />
+    <Content Include="Views\Categorias\Modal\ModalNovaCategoria.cshtml" />
+    <Content Include="Views\Categorias\Modal\ModalRemoverCategoria.cshtml" />
+    <Content Include="Views\Categorias\Partial\FiltroCategorias.cshtml" />
+    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Produtos\ConsultarProdutos.cshtml" />
+    <Content Include="Views\Produtos\Partial\FiltroProdutos.cshtml" />
+    <Content Include="Views\Produtos\Modal\ModalNovoProduto.cshtml" />
+    <Content Include="Views\Produtos\Modal\ModalRemoverProduto.cshtml" />
+    <Content Include="Views\Pedidos\ConsultarPedidos.cshtml" />
+    <Content Include="Views\Pedidos\Modal\ModalConsultarPedido.cshtml" />
+    <Content Include="Views\PedidosCadastrados\ConsultarPedidosCadastrados.cshtml" />
+    <Content Include="Views\PedidosCadastrados\Partial\FiltroPedidosCadastrados.cshtml" />
+    <Content Include="Views\PedidosCadastrados\Modal\ModalConsultarItens.cshtml" />
+    <Content Include="Views\PedidosCadastrados\Modal\ModalRemoverPedido.cshtml" />
+    <Content Include="Views\Pedidos\Partial\FiltroPedidos.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\Services\Administrativo\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5312</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5312/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

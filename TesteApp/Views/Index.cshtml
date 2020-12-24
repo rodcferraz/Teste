@@ -1,0 +1,59 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+
+<html data-ng-app="app">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Gerencia Portal SSP</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/vendor.min.css")" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    @Styles.Render("~/Styles/app-css")
+    <!--[if lte IE 9]>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/html5shiv.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/respond.min.js")"></script>
+    <![endif]-->
+</head>
+<body data-ng-controller="AppController as app" data-ng-init="app.validarSessao()">
+
+    <div class="modal" data-backdrop="static" data-app-carregando>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                    <br />
+                    <h3>Carregando...</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-inverse">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">Teste</a>
+        </div>
+
+        <div id="menu" class="collapse navbar-collapse">
+            <a class="navbar-brand" href="/Categorias">Categorias</a>
+            <a class="navbar-brand" href="/Produtos">Produtos</a>
+            <a class="navbar-brand" href="/Pedidos">Pedidos</a>
+            <a class="navbar-brand" href="/Pedidos/PedidosCadastrados">Pedidos Cadastrados</a>
+        </div>
+    </nav>
+
+    <div class="ng-cloak container container-body">
+        @RenderBody()
+    </div>
+
+    @*<footer class="footer">
+            <div class="container text-center">
+                <p class="text-muted">Portal SSP - &copy; 2017 - Diretoria de Tecnologia da Informação - Secretaria de Segurança Pública - SE</p>
+            </div>
+        </footer>*@
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/vendor.min.js")"></script>
+    <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
+    @Scripts.Render("~/Scripts/app-js")
+</body>
+</html>
